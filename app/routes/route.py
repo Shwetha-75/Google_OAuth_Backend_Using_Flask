@@ -4,7 +4,6 @@ from app.GoogleOAuth.googleOAuthRequired import google_auth_required
 
 route=Blueprint('token',__name__)
 
-
 @route.route("/google-signin",methods=['POST','GET'])
 # Verify client access tokens
 @google_auth_required

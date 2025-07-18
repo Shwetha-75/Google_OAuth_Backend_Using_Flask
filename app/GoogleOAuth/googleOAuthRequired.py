@@ -18,7 +18,8 @@ def google_auth_required(f):
             # create google request object 
             request_object = google_requests.Request()
             # get the client tokens
-            id_token_from_client=request.get_json()   
+            id_token_from_client=request.get_json()  
+            # print(id_token_from_client) 
             # if not exist return with clear message  
             if not id_token_from_client:
                 return jsonify({'status':False,"message": "ID token missing"}), 401
@@ -28,7 +29,7 @@ def google_auth_required(f):
                 # verify the tokens
                 idinfo = id_token.verify_oauth2_token(id_token_from_client,request_object, GOOGLE_CLIENT_ID)
                 
-                # print(idinfo)
+                print(idinfo)
                 # User Details
                 userid = idinfo['sub'] 
                 email = idinfo['email']
